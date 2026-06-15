@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notifications</title>
+  <link rel="stylesheet" href="{% static 'board.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Notifications</h1>
+      <a href="{% url 'board' %}">← Back to Board</a>
+      <a href="{% url 'home' %}">← Back to Home</a>
+    </div>
+
+    {% if notifications %}
+      <form method="POST" action="{% url 'mark_all_notifications_read' %}" style="margin-bottom:1rem;">
+        {% csrf_token %}
+        <button type="submit" class="follow-btn">Mark all as read</button>
+      </form>
+
+      <div class="network-list">
+        {% for n in notifications %}
+          <div class="network-item">
+            <strong>{{ n.sender.username }}</strong> {{ n.action }}
+            <span style="color:#888; font-size:12px;">· {{ n.created_at|date:"M d, H:i" }}</span>
+            <form method="POST" action="{% url 'mark_notification_read' n.id %}" style="display:inline; float:right;">
+              {% csrf_token %}
+              <button type="submit" class="follow-btn following">Mark read</button>
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty">No new notifications.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,290 @@
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notif-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.notif-badge {
+  background: #dc3545;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 1px 7px;
+  line-height: 1.4;
+}
+
+.messages {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.messages li {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.messages li.success {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.messages li.error {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.messages li.info {
+  background: #d1ecf1;
+  border: 1px solid #bee5eb;
+}
+
+/* Post form */
+.post-form {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.post-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+  margin-bottom: 0.75rem;
+}
+
+.post-form button {
+  padding: 0.5rem 1.5rem;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.post-form button:hover {
+  background: #0052a3;
+}
+
+/* Post card */
+.post-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.post-meta,
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.post-card>p,
+.comment>p {
+  margin: 0 0 0.75rem;
+  line-height: 1.6;
+}
+
+/* Follow stats under header */
+.follow-stats {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Author + follow button */
+.author-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.follow-form {
+  display: inline;
+}
+
+.follow-btn {
+  padding: 0.1rem 0.6rem;
+  font-size: 11px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.follow-btn:hover {
+  background: #0052a3;
+}
+
+.follow-btn.following {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.follow-btn.following:hover {
+  background: #d0d0d0;
+}
+
+/* Like + delete row */
+.post-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.like-btn {
+  padding: 0.25rem 0.75rem;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.like-btn.liked {
+  background: #fff3cd;
+  border-color: #ffc107;
+}
+
+.like-btn:hover {
+  background: #e0e0e0;
+}
+
+.delete-btn {
+  padding: 0.25rem 0.75rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background: #b02a37;
+}
+
+.delete-btn.small {
+  font-size: 11px;
+  padding: 0.2rem 0.5rem;
+}
+
+/* Comments */
+.comments {
+  border-top: 1px solid #eee;
+  padding-top: 0.75rem;
+}
+
+.comment {
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment>p {
+  margin: 0 0 0.4rem;
+  font-size: 13px;
+}
+
+.comment-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.comment-form button {
+  padding: 0.4rem 1rem;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.comment-form button:hover {
+  background: #0052a3;
+}
+
+.empty {
+  color: #888;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.network-list {
+  margin-bottom: 1.5rem;
+}
+
+.network-item {
+  background: white;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+}

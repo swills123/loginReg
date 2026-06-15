@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ target.username }}'s Network</title>
+  <link rel="stylesheet" href="{% static 'board.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>{{ target.username }}'s Network</h1>
+      <a href="{% url 'user_profile' target.username %}">← Back to Profile</a>
+    </div>
+
+    <!-- People I follow -->
+    <h2>Following ({{ following.count }})</h2>
+    <div class="network-list">
+      {% for f in following %}
+        <div class="network-item"><a href="{% url 'user_profile' f.following.username %}">{{ f.following.username }}</a></div>
+      {% empty %}
+        <p class="empty">{{ target.username }} isn't following anyone yet.</p>
+      {% endfor %}
+    </div>
+
+    <!-- People who follow me -->
+    <h2>Followers ({{ followers.count }})</h2>
+    <div class="network-list">
+      {% for f in followers %}
+        <div class="network-item"><a href="{% url 'user_profile' f.follower.username %}">{{ f.follower.username }}</a></div>
+      {% empty %}
+        <p class="empty">No followers yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

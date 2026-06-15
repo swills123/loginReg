@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile_user.username }}'s Profile</title>
+    <link rel="stylesheet" href="{% static 'board.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ profile_user.username }}'s Profile</h1>
+            <a href="{% url 'board' %}">← Back to Board</a>
+        </div>
+
+        <!-- follower / following counts (click to see who) -->
+        <div class="follow-stats">
+            <a href="{% url 'follow_list' profile_user.id %}"><strong>{{ profile_user.followers.count }}</strong> followers</a>
+            <a href="{% url 'follow_list' profile_user.id %}"><strong>{{ profile_user.following.count }}</strong> following</a>
+        </div>
+
+        <!-- follow / unfollow button (only on other people's profiles) -->
+        {% if profile_user != request.user %}
+            <form method="POST" action="{% url 'toggle_follow' profile_user.id %}" style="margin-bottom:1.5rem;">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" class="follow-btn {% if is_following %}following{% endif %}">
+                    {% if is_following %}Following{% else %}Follow{% endif %}
+                </button>
+            </form>
+        {% endif %}
+
+        <!-- this user's posts -->
+        <h2>Posts</h2>
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post-card">
+                    <div class="post-meta">
+                        <strong>{{ post.author.username }}</strong>
+                        <span>{{ post.created_at|date:"M d, Y H:i" }}</span>
+                    </div>
+                    <p>{{ post.content }}</p>
+
+                    <div class="post-actions">
+                        <form method="POST" action="{% url 'toggle_like' post.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" class="like-btn {% if post.user_liked %}liked{% endif %}">
+                                👍 {{ post.like_count }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="empty">{{ profile_user.username }} hasn't posted anything yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
