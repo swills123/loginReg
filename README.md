@@ -64,9 +64,7 @@ apps/
 └── config/            # Project settings and URL configuration
 ```
 
-## Screenshots
-
-Coming soon.
+## Coming Soon
 
 ## Author
 
